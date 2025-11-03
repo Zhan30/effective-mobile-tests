@@ -49,7 +49,7 @@ class MainPage(BasePage):
 
     def click_reviews_link(self):
         self.reviews_link.click()
-        self.check_current_url(re.compile(".*/#cases"))
+        self.check_current_url(re.compile(".*/#Reviews"))
 
     def click_contacts_link(self):
         self.contacts_link.click()

@@ -1,12 +1,24 @@
 import  allure
 import pytest
+from allure_commons.types import Severity
 
 from pages.main_page import MainPage
+from tools.allure.epics import AllureEpic
+from tools.allure.features import AllureFeature
+from tools.allure.stories import AllureStory
+from tools.allure.tags import AllureTag
 
-@pytest.mark.courses
+
 @pytest.mark.regression
+@allure.tag(AllureTag.MAINPAGE)
+@allure.epic(AllureEpic.MAINPAGE)
+@allure.feature(AllureFeature.MAINPAGE_BLOCKS)
+@allure.story(AllureStory.TEST_MAINPAGE_BLOCKS)
 class TestMainPageBlocks:
 
+    @allure.tag(AllureTag.BLOCKS_CLICK)
+    @allure.title("Check block transitions by click")
+    @allure.severity(Severity.NORMAL)
     def test_blocks_click(self, main_page: MainPage):
         main_page.visit("https://effective-mobile.ru/")
 

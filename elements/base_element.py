@@ -12,26 +12,21 @@ class BaseElement:
         self.locator = locator
 
     @property
-    def type_of(self) -> str:  # Добавили свойство type_of
+    def type_of(self) -> str:
         return "base element"
 
-        # Метод принимает кейворд аргументы (kwargs)
-
-    def get_locator(self, **kwargs) -> Locator:  # объект Locator для взаимодействия с элементом
-        # Инициализирует объект локатора, подставляя динамические значения в локатор
+    def get_locator(self, **kwargs) -> Locator:
         locator = self.locator.format(**kwargs)
         step = f'Getting locator with "data-elem-id={locator}"'
 
         with allure.step(step):
             logger.info(step)
-            return self.page.get_by_test_id(locator)
+            return self.page.locator(locator)
 
     def click(self, **kwargs):
         step = f'Clicking {self.type_of} "{self.name}"'
 
-        with allure.step(step):  # Добавили шаг
-            # "Лениво" инициализируем локатор
-            # Добавили аргумент nth и передаем его в get_locator
+        with allure.step(step):
             locator = self.get_locator(**kwargs)
             logger.info(step)
             locator.click()
