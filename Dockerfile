@@ -1,5 +1,8 @@
 FROM python:3.11-slim
 
+RUN python -m playwright install-deps
+RUN python -m playwright install chromium
+
 WORKDIR /effective-mobile-tests
 
 COPY requirements.txt .
