@@ -6,7 +6,7 @@ from playwright.sync_api import Page, Playwright
 
 @pytest.fixture
 def chromium_page(request: SubRequest, playwright: Playwright) -> Page:
-    browser = playwright.chromium.launch(headless=True)
+    browser = playwright.chromium.launch(headless=True, args=["--no-sandbox"])
     context = browser.new_context(record_video_dir='./videos')
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     page = context.new_page()
