@@ -9,7 +9,6 @@ from tools.allure.stories import AllureStory
 from tools.allure.tags import AllureTag
 
 
-@pytest.mark.regression
 @allure.tag(AllureTag.MAINPAGE)
 @allure.epic(AllureEpic.MAINPAGE)
 @allure.feature(AllureFeature.MAINPAGE_BLOCKS)
