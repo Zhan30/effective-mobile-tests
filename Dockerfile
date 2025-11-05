@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libxcb-dri3-0 libgbm1 libxkbcommon0 xdg-utils \
   && rm -rf /var/lib/apt/lists/*
 
-RUN python -m playwright install-deps
 RUN python -m playwright install chromium
 
 WORKDIR /effective-mobile-tests
